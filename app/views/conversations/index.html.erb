@@ -1,0 +1,19 @@
+
+<table class="table message-box table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger')
+      %><h2>Chats</h2></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @conversations.each do |conversation| %>
+      <tr>
+        <td><%= link_to conversation.user2.full_name, conversation_messages_path(conversation) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Conversation', new_conversation_path, class: 'btn btn-warning' %>

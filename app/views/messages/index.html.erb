@@ -1,0 +1,17 @@
+<div class="heading">
+  <%= link_to 'Back', conversations_path, class: 'btn btn-success' %>
+  <h2>Chat with <%= @other_user.full_name %></h2>
+</div>
+<div class="message-box">
+  <% @messages.each do |message| %>
+      <div class="flex-grid one-message">
+        <div class="msg msg_<%= sender_name(message.sender, @other_user) %>">
+          <%= sender_name(message.sender, @other_user) %>: <%= message.content %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+<div class="entry">
+  <%= render 'form', message: @message %>
+</div>
